@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clasificador de imágenes</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+
+    <!-- Teachable Machine -->
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Clasificador de imágenes</h1>
+
+        <p>
+            Utiliza la cámara para clasificar una imagen mediante
+            un modelo entrenado con Teachable Machine.
+        </p>
+
+        <!-- Cámara -->
+        <div id="webcam-container"></div>
+
+        <!-- Resultado -->
+        <div class="resultado">
+            <h2>Resultado</h2>
+
+            <p id="resultado">
+                Pulsa "Iniciar" para comenzar.
+            </p>
+
+            <p id="confianza">
+                Confianza: -
+            </p>
+        </div>
+
+        <!-- Botones -->
+        <div class="botones">
+            <button id="startButton">Iniciar</button>
+            <button id="stopButton">Parar</button>
+        </div>
+
+        <!-- Umbral -->
+        <div class="configuracion">
+
+            <label for="threshold">
+                Coincidencia mínima:
+            </label>
+
+            <input
+                type="number"
+                id="threshold"
+                min="0"
+                max="100"
+                value="60"
+            >
+
+            <span>%</span>
+
+        </div>
+
+        <!-- Subir imagen -->
+        <div class="subir-imagen">
+
+            <h2>Subir una imagen</h2>
+
+            <input
+                type="file"
+                id="imageUpload"
+                accept="image/*"
+            >
+
+            <div>
+                <img
+                    id="preview"
+                    alt="Vista previa de la imagen"
+                >
+            </div>
+
+            <button id="classifyButton">
+                Clasificar imagen
+            </button>
+
+        </div>
+
+        <!-- Historial -->
+        <div class="historial">
+
+            <h2>Historial de resultados</h2>
+
+            <ul id="historyList"></ul>
+
+            <button id="clearHistory">
+                Borrar historial
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
